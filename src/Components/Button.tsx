@@ -3,7 +3,11 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 export type ButtonProps = {
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.FormEvent<HTMLButtonElement>
+  ) => void;
   text: string;
   ariaLabel?: string;
   // Custom styles
