@@ -2,9 +2,14 @@
   padding-top: 50px;
   min-height: 100vh;
   background-color: #faf9fe;
+
+  display: grid;
+  grid-template-rows: auto 100px;
+  place-items: start center;
 }
 
 .products {
+  width: 100%;
   padding: 15px;
   display: grid;
   grid-gap: 15px;
