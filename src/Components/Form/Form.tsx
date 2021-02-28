@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 
@@ -70,33 +70,80 @@ const Form: React.FC<FormProps> = ({
 
   return (
     <div className={className}>
-      <Title text={title} />
+      <Title text={title} className={"title"} />
       <form className="form">
-        <TextInput
-          name="name"
-          title="Product name"
-          onChange={updateName}
-          value={name}
+        <div className="form__inputs-wrapper">
+          <TextInput
+            name="name"
+            title="Product name"
+            onChange={updateName}
+            value={name}
+          />
+          <Textarea
+            name="description"
+            title="Description"
+            onChange={updateDescription}
+            value={description}
+          />
+          <NumberInput
+            name="priority"
+            title="Priority (1-5)"
+            onChange={updatePriority}
+            defaultValue={priority.toString()}
+          />
+        </div>
+        <Button
+          onClick={submitForm}
+          text="Add"
+          disabled={!name}
+          big
+          rounded
+          className="button"
         />
-        <Textarea
-          name="description"
-          title="Description"
-          onChange={updateDescription}
-          value={description}
-        />
-        <NumberInput
-          name="priority"
-          title="Priority (1-5)"
-          onChange={updatePriority}
-          defaultValue={priority.toString()}
-        />
-        <Button onClick={submitForm} text="add" disabled={!name} big rounded />
       </form>
-      <Button onClick={onCancel} text="Cancel" big rounded transparent />
+      <Button
+        onClick={onCancel}
+        text="Cancel"
+        big
+        rounded
+        transparent
+        className="button"
+      />
     </div>
   );
 };
 
-const FormStyled = styled(Form)``;
+const FormStyled = styled(Form)`
+  padding: 120px 15px;
+
+  width: 100%;
+  min-height: 100vh;
+
+  position: absolute;
+  top: 0;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(40px);
+
+  .title {
+    margin-bottom: 16px;
+  }
+
+  .form {
+    display: grid;
+    grid-gap: 70px;
+
+    margin-bottom: 25px;
+
+    &__inputs-wrapper {
+      display: grid;
+      grid-gap: 25px;
+    }
+  }
+`;
 
 export default FormStyled;
