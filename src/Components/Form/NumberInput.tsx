@@ -97,6 +97,8 @@ const NumberInputStyled = styled(NumberInput)`
     border: none;
     border-radius: 8px;
 
+    width: 100%;
+
     font-size: 16px;
     line-height: 19px;
     padding: 16px 17px;
