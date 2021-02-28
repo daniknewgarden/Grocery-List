@@ -31,9 +31,8 @@ const TextArea: React.FC<TextAreaProps> = ({
         onChange={onChange}
         disabled={disabled}
         placeholder={title}
-      >
-        {value}
-      </textarea>
+        defaultValue={value}
+      ></textarea>
     </div>
   );
 };
