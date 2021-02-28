@@ -3,7 +3,10 @@ import "./App.css";
 import MainTitle from "./Components/MainTitle";
 import ProductCard from "./Components/ProductCard";
 
+import Form from "./Components/Form/Form";
+
 import Button from "./Components/Button";
+
 import { Product } from "./types";
 function App() {
   const [items, setItems] = useState<Array<Product>>([
@@ -17,18 +20,15 @@ function App() {
     },
   ]);
 
-  const addItem = () => {
-    setItems([
-      ...items,
-      {
-        id: Math.random(),
-        name: "Test product",
-        description: "description",
-        priority: 1,
-        dateCreated: new Date(),
-        completed: false,
-      },
-    ]);
+  const [isFormVisible, setFormVisible] = useState<boolean>(false);
+
+  const toggleFormVisible = () => {
+    setFormVisible(!isFormVisible);
+  };
+
+  const addItem = (item: Product) => {
+    setItems([...items, item]);
+    toggleFormVisible();
   };
 
   const removeItem = (itemId: number): void => {
@@ -53,6 +53,13 @@ function App() {
 
   return (
     <div className="App">
+      {isFormVisible && (
+        <Form
+          onCancel={toggleFormVisible}
+          onSubmit={addItem}
+          title="Add new product"
+        />
+      )}
       <main className="products">
         {items.length < 1 && (
           <MainTitle text="There is nothing here. Add new product" />
@@ -101,13 +108,7 @@ function App() {
           </section>
         )}
       </main>
-      <Button
-        text="Add new product"
-        ariaLabel="click"
-        onClick={addItem}
-        big
-        rounded
-      />
+      <Button text="Add new product" onClick={toggleFormVisible} big rounded />
     </div>
   );
 }
