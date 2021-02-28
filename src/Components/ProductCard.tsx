@@ -12,15 +12,17 @@ export type ProductCardProps = {
   title: string;
   description: string;
   id: number;
-  onCheck: (id: number) => void;
+  onCheck: (id: number, checked: boolean) => void;
   onDelete: (id: number) => void;
   className?: string;
+  completed?: boolean;
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   title,
   description,
   id,
+  completed,
   onCheck,
   onDelete,
   className,
@@ -41,7 +43,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <Checkbox
           name={title}
           text={`Mark ${title} as completed`}
-          onCheck={() => onCheck(id)}
+          onCheck={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onCheck(id, e.target.checked)
+          }
+          defaultChecked={completed}
         />
         <div className="text-wrapper">
           <Title text={title} />
