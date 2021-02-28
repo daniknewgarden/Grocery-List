@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Grocery List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**This app will looks like this** ![Screenshot](https://i.imgur.com/7DZSWbR.png).
+
+[View in Figma](https://www.figma.com/file/mKmWnJRJ80uCvatKkG2JVy/UI-kit-freelance-platform-app-Copy?node-id=8838%3A516)
 
 ## Available Scripts
 
