@@ -5,6 +5,7 @@ import Title from "./Components/Title";
 import Subtitle from "./Components/Subtitle";
 import Checkbox from "./Components/Checkbox";
 import Button from "./Components/Button";
+import TextArea from "./Components/Form/Textarea";
 
 function App() {
   const checkboxTest = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -15,6 +16,10 @@ function App() {
 
   const buttonTest = (e: React.MouseEvent<HTMLButtonElement>): void => {
     console.log("click");
+  };
+
+  const textareaTest = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    console.log(e.target.value);
   };
 
   return (
@@ -31,6 +36,11 @@ function App() {
         danger
       />
       <Button text="Add" ariaLabel="click" onClick={buttonTest} big rounded />
+      <TextArea
+        onChange={textareaTest}
+        name="description"
+        title="Description"
+      />
     </div>
   );
 }
