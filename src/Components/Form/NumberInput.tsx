@@ -67,12 +67,9 @@ const NumberInput: React.FC<NumberInputProps> = ({
         />
       </div>
       <div className="buttons-wrapper">
-        <button onClick={decrement} className="button">
-          -
-        </button>
-        <button onClick={increment} className="button">
-          +
-        </button>
+        <input type="button" onClick={decrement} className="button" value="-" />
+
+        <input type="button" onClick={increment} className="button" value="+" />
       </div>
     </div>
   );
